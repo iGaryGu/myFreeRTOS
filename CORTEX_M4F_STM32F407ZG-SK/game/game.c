@@ -306,4 +306,5 @@ GAME_Render()
 	LCD_DrawFullRect( player2X, player2Y, player2W, player2H );
 	LCD_DrawFullRect( ballX, ballY, ballSize, ballSize );
 	LCD_DrawLine( 10, LCD_PIXEL_HEIGHT / 2, LCD_PIXEL_WIDTH - 20, LCD_DIR_HORIZONTAL );
+
 }
