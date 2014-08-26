@@ -11,6 +11,9 @@ void
 EventHandler3();
 
 void
+EventHandler4();
+
+void
 GAME_Update();
 
 void

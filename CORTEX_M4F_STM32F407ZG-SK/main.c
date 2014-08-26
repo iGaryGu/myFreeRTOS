@@ -43,7 +43,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-extern uint8_t demoMode;
+//extern uint8_t demoMode;
 
 void
 prvInit()
@@ -76,6 +76,7 @@ static void GameEventTask2( void *pvParameters )
 {
 	while( 1 ){
 		GAME_EventHandler2();
+		vTaskDelay(10);
 	}
 }
 
@@ -86,6 +87,12 @@ static void GameEventTask3( void *pvParameters )
 	}
 }
 
+static void GameEventTask4( void *pvParameters )
+{
+	while( 1 ){
+		GAME_EventHandler4();
+	}
+}
 static void GameTask( void *pvParameters )
 {
 	while( 1 ){
@@ -100,13 +107,13 @@ int main(void)
 {
 	prvInit();
 
-	if( STM_EVAL_PBGetState( BUTTON_USER ) )
-		demoMode = 1;
+//	if( STM_EVAL_PBGetState( BUTTON_USER ) )
+//		demoMode = 1;
 
 	xTaskCreate( GameTask, (signed char*) "GameTask", 128, NULL, tskIDLE_PRIORITY + 1, NULL );
 	xTaskCreate( GameEventTask1, (signed char*) "GameEventTask1", 128, NULL, tskIDLE_PRIORITY + 1, NULL );
 	xTaskCreate( GameEventTask2, (signed char*) "GameEventTask2", 128, NULL, tskIDLE_PRIORITY + 1, NULL );
-	xTaskCreate( GameEventTask3, (signed char*) "GameEventTask3", 128, NULL, tskIDLE_PRIORITY + 1, NULL );
+	xTaskCreate( GameEventTask4, (signed char*) "GameEventTask4", 128, NULL, tskIDLE_PRIORITY + 1, NULL );
 
 	//Call Scheduler
 	vTaskStartScheduler();
