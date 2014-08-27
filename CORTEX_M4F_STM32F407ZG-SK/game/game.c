@@ -112,7 +112,7 @@ void GAME_Update(){
 	}
 	int i;
 	for(i = 0 ; i < 8 ;i++){
-		if((ballX+ballSize/2 >= posX[i]) && (ballY - posY[i] < wallL) && (ballY - posY[i] > 0)){
+		if((ballX+ballSize >= posX[i]) && (ballX< (posX[i]+wallW)) && (ballY - posY[i] < wallL) && (ballY - posY[i] > 0)){
 			score -= 1;
 			BallReset();
 			LCD_ClearLine(LCD_LINE_1);
